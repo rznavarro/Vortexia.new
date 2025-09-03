@@ -110,6 +110,13 @@ export default function Chat({ isOpen, onClose }: ChatProps) {
         <div className="absolute inset-0 bg-gradient-to-r from-red-600/5 via-transparent to-red-600/5 opacity-50"></div>
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
         
+        <button
+          onClick={onClose}
+          className="text-red-300/60 hover:text-red-200 transition-all duration-500 p-2 hover:bg-red-600/20 rounded-full relative z-10 group"
+        >
+          <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
+        </button>
+        
         <div className="flex items-center space-x-4">
           <div className="relative group">
             <img 
@@ -125,12 +132,6 @@ export default function Chat({ isOpen, onClose }: ChatProps) {
             <p className="text-red-200/70 text-xs vortexia-chat-elegant tracking-wide">◦ Entidad de Automatización ◦</p>
           </div>
         </div>
-        <button
-          onClick={onClose}
-          className="text-red-300/60 hover:text-red-200 transition-all duration-500 p-2 hover:bg-red-600/20 rounded-full relative z-10 group"
-        >
-          <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
-        </button>
       </div>
 
       {/* Messages Container */}
