@@ -29,7 +29,7 @@ export default function Layout({ children, currentPageName }: LayoutProps) {
     <div className="min-h-screen bg-gradient-to-b from-gray-950 via-black to-gray-900 text-white relative overflow-hidden">
       <style>
         {`
-          @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Crimson+Text:wght@400;600&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
           
           :root {
             --vortexia-black: #0a0a0b;
@@ -43,7 +43,7 @@ export default function Layout({ children, currentPageName }: LayoutProps) {
           }
           
           body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-family: 'Cormorant Garamond', 'Crimson Text', Georgia, serif;
             font-weight: 300;
             background: var(--vortexia-black);
             letter-spacing: 0.01em;
@@ -51,7 +51,7 @@ export default function Layout({ children, currentPageName }: LayoutProps) {
           }
           
           .vortexia-serif {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', 'Cormorant Garamond', serif;
             line-height: 1.2;
           }
           
@@ -90,6 +90,18 @@ export default function Layout({ children, currentPageName }: LayoutProps) {
             background-image: 
               radial-gradient(circle at 25% 25%, rgba(155, 28, 28, 0.1) 0%, transparent 25%),
               radial-gradient(circle at 75% 75%, rgba(155, 28, 28, 0.05) 0%, transparent 25%);
+          }
+
+          .vortexia-chat-elegant {
+            font-family: 'Cormorant Garamond', 'Crimson Text', Georgia, serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+          }
+
+          .vortexia-chat-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            letter-spacing: 0.01em;
           }
         `}
       </style>
