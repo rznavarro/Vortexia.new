@@ -103,6 +103,42 @@ export default function Layout({ children, currentPageName }: LayoutProps) {
             font-weight: 500;
             letter-spacing: 0.01em;
           }
+
+          .vortexia-enigma {
+            font-family: 'Playfair Display', serif;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+          }
+
+          .vortexia-mystical {
+            background: linear-gradient(45deg, #dc2626, #7c2d12, #dc2626, #991b1b);
+            background-size: 400% 400%;
+            animation: mystical-flow 8s ease-in-out infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+
+          @keyframes mystical-flow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+          }
+
+          .vortexia-shadow-pulse {
+            animation: shadow-pulse 3s ease-in-out infinite;
+          }
+
+          @keyframes shadow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3), inset 0 0 20px rgba(220, 38, 38, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.6), inset 0 0 30px rgba(220, 38, 38, 0.2); }
+          }
+
+          .vortexia-glass {
+            background: rgba(15, 15, 16, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+          }
         `}
       </style>
 

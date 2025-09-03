@@ -99,37 +99,48 @@ export default function Chat({ isOpen, onClose }: ChatProps) {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9, y: 20 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="fixed bottom-6 right-6 w-[420px] h-[650px] bg-gradient-to-b from-gray-950/98 via-gray-950/95 to-black/98 backdrop-blur-2xl border border-red-600/40 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden"
+      className="fixed bottom-6 right-6 w-[440px] h-[680px] vortexia-glass rounded-3xl vortexia-shadow-pulse z-50 flex flex-col overflow-hidden"
       style={{
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(220, 38, 38, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
+        boxShadow: '0 30px 60px -12px rgba(0, 0, 0, 0.9), 0 0 100px rgba(220, 38, 38, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03)'
       }}
     >
       {/* Chat Header */}
-      <div className="bg-gradient-to-r from-red-600/90 via-red-700/90 to-red-800/90 backdrop-blur-xl p-8 flex items-center justify-between border-b border-red-500/30">
+      <div className="bg-gradient-to-r from-black/95 via-gray-950/95 to-black/95 backdrop-blur-xl p-6 flex items-center justify-between border-b border-red-600/20 relative overflow-hidden">
+        {/* Mystical background pattern */}
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600/5 via-transparent to-red-600/5 opacity-50"></div>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
+        
         <div className="flex items-center space-x-4">
-          <div className="relative">
+          <div className="relative group">
             <img 
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/efef71724_descarga4.png" 
               alt="Vortexia Logo" 
-              className="w-12 h-12 object-contain filter brightness-110"
+              className="w-10 h-10 object-contain filter brightness-125 drop-shadow-lg group-hover:brightness-150 transition-all duration-500"
             />
-            <div className="absolute inset-0 bg-white/10 rounded-full blur-sm"></div>
+            <div className="absolute inset-0 bg-red-500/20 rounded-full blur-md group-hover:bg-red-400/30 transition-all duration-500"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-red-600/20 to-red-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
-          <div>
-            <h3 className="text-white vortexia-chat-title text-xl tracking-wide">VORTEXIA</h3>
-            <p className="text-red-100/90 text-sm vortexia-chat-elegant">Asistente de Automatización IA</p>
+          <div className="relative z-10">
+            <h3 className="vortexia-mystical vortexia-enigma text-sm tracking-widest">VORTEXIA</h3>
+            <p className="text-red-200/70 text-xs vortexia-chat-elegant tracking-wide">◦ Entidad de Automatización ◦</p>
           </div>
         </div>
         <button
           onClick={onClose}
-          className="text-white/80 hover:text-white transition-all duration-300 p-2 hover:bg-white/10 rounded-full"
+          className="text-red-300/60 hover:text-red-200 transition-all duration-500 p-2 hover:bg-red-600/20 rounded-full relative z-10 group"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
         </button>
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-8 space-y-6 scrollbar-thin scrollbar-thumb-red-600/40 scrollbar-track-transparent">
+      <div className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-thin scrollbar-thumb-red-600/30 scrollbar-track-transparent relative">
+        {/* Mystical background elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-red-600/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-24 h-24 bg-red-500/3 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        </div>
+        
         <AnimatePresence>
           {messages.map((message) => (
             <motion.div
@@ -139,32 +150,41 @@ export default function Chat({ isOpen, onClose }: ChatProps) {
               transition={{ duration: 0.3 }}
               className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
-              <div className={`flex items-start space-x-4 max-w-[85%] ${message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+              <div className={`flex items-start space-x-3 max-w-[85%] ${message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 relative group ${
                   message.sender === 'user' 
-                    ? 'bg-red-600' 
-                    : 'bg-gray-800 border border-red-600/30'
+                    ? 'bg-gradient-to-br from-red-600 to-red-700 shadow-lg' 
+                    : 'bg-gradient-to-br from-gray-900/80 to-black/80 border border-red-600/20 backdrop-blur-sm'
                 }`}>
                   {message.sender === 'user' ? (
-                    <User className="w-4 h-4 text-white" />
+                    <>
+                      <User className="w-4 h-4 text-white relative z-10" />
+                      <div className="absolute inset-0 bg-red-500/30 rounded-full blur-sm group-hover:bg-red-400/40 transition-all duration-300"></div>
+                    </>
                   ) : (
-                    <img 
-                      src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/efef71724_descarga4.png" 
-                      alt="Vortexia" 
-                      className="w-5 h-5 object-contain filter brightness-125"
-                    />
+                    <>
+                      <img 
+                        src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/efef71724_descarga4.png" 
+                        alt="Vortexia" 
+                        className="w-5 h-5 object-contain filter brightness-150 drop-shadow-sm relative z-10 group-hover:brightness-200 transition-all duration-300"
+                      />
+                      <div className="absolute inset-0 bg-red-600/20 rounded-full blur-sm group-hover:bg-red-500/30 transition-all duration-300"></div>
+                    </>
                   )}
                 </div>
-                <div className={`rounded-2xl px-6 py-4 relative ${
+                <div className={`rounded-2xl px-5 py-4 relative backdrop-blur-sm ${
                   message.sender === 'user'
-                    ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-lg'
-                    : 'bg-gradient-to-br from-gray-800/60 to-gray-900/60 text-gray-100 border border-gray-700/40 backdrop-blur-sm'
+                    ? 'bg-gradient-to-br from-red-600/90 to-red-700/90 text-white shadow-xl border border-red-500/30'
+                    : 'bg-gradient-to-br from-gray-900/40 to-black/60 text-gray-100 border border-red-600/15'
                 }`}>
                   {message.sender === 'bot' && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-transparent rounded-2xl"></div>
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-br from-red-600/8 via-transparent to-red-500/5 rounded-2xl"></div>
+                      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent"></div>
+                    </>
                   )}
-                  <p className="text-sm leading-relaxed vortexia-chat-elegant relative z-10">{message.text}</p>
-                  <p className={`text-xs mt-3 relative z-10 ${
+                  <p className="text-sm leading-relaxed vortexia-chat-elegant relative z-10 tracking-wide">{message.text}</p>
+                  <p className={`text-xs mt-3 relative z-10 tracking-wider ${
                     message.sender === 'user' ? 'text-red-100/80' : 'text-gray-400'
                   }`}>
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -182,19 +202,21 @@ export default function Chat({ isOpen, onClose }: ChatProps) {
             animate={{ opacity: 1, y: 0 }}
             className="flex justify-start"
           >
-            <div className="flex items-start space-x-4">
-              <div className="w-8 h-8 bg-gray-800 border border-red-600/30 rounded-full flex items-center justify-center">
+            <div className="flex items-start space-x-3">
+              <div className="w-9 h-9 bg-gradient-to-br from-gray-900/80 to-black/80 border border-red-600/20 rounded-full flex items-center justify-center relative group backdrop-blur-sm">
                 <img 
                   src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/efef71724_descarga4.png" 
                   alt="Vortexia" 
-                  className="w-5 h-5 object-contain filter brightness-125"
+                  className="w-5 h-5 object-contain filter brightness-150 drop-shadow-sm relative z-10"
                 />
+                <div className="absolute inset-0 bg-red-600/20 rounded-full blur-sm"></div>
               </div>
-              <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-gray-700/40 backdrop-blur-sm rounded-2xl px-6 py-4">
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-red-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-red-400 rounded-full animate-bounce delay-100"></div>
-                  <div className="w-2 h-2 bg-red-400 rounded-full animate-bounce delay-200"></div>
+              <div className="bg-gradient-to-br from-gray-900/40 to-black/60 border border-red-600/15 backdrop-blur-sm rounded-2xl px-5 py-4 relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600/8 via-transparent to-red-500/5 rounded-2xl"></div>
+                <div className="flex space-x-1.5 relative z-10">
+                  <div className="w-2 h-2 bg-red-400/80 rounded-full animate-bounce shadow-sm"></div>
+                  <div className="w-2 h-2 bg-red-400/80 rounded-full animate-bounce delay-100 shadow-sm"></div>
+                  <div className="w-2 h-2 bg-red-400/80 rounded-full animate-bounce delay-200 shadow-sm"></div>
                 </div>
               </div>
             </div>
@@ -204,22 +226,24 @@ export default function Chat({ isOpen, onClose }: ChatProps) {
       </div>
 
       {/* Input Form */}
-      <div className="p-8 border-t border-gray-800/50 bg-gradient-to-t from-gray-950/80 to-transparent backdrop-blur-sm">
-        <form onSubmit={sendMessage} className="flex space-x-3">
+      <div className="p-6 border-t border-red-600/20 bg-gradient-to-t from-black/90 via-gray-950/80 to-transparent backdrop-blur-xl relative">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent"></div>
+        <form onSubmit={sendMessage} className="flex space-x-3 relative z-10">
           <input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Escribe tu consulta sobre IA..."
-            className="flex-1 bg-gray-800/40 border border-gray-700/40 rounded-full px-6 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-red-500/60 focus:bg-gray-800/60 transition-all duration-300 text-sm vortexia-chat-elegant backdrop-blur-sm"
+            placeholder="◦ Consulta los misterios de la IA ◦"
+            className="flex-1 bg-gray-900/30 border border-red-600/20 rounded-full px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-red-500/60 focus:bg-gray-900/50 transition-all duration-500 text-sm vortexia-chat-elegant backdrop-blur-sm tracking-wide"
             disabled={isTyping}
           />
           <button
             type="submit"
             disabled={isTyping || !inputValue.trim()}
-            className="bg-gradient-to-br from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 disabled:from-gray-700 disabled:to-gray-800 disabled:cursor-not-allowed text-white p-4 rounded-full transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-red-600/25"
+            className="bg-gradient-to-br from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 disabled:from-gray-800 disabled:to-gray-900 disabled:cursor-not-allowed text-white p-4 rounded-full transition-all duration-500 flex items-center justify-center shadow-xl hover:shadow-red-600/40 relative group overflow-hidden"
           >
-            <Send className="w-4 h-4" />
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-red-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <Send className="w-4 h-4 relative z-10 group-hover:scale-110 transition-transform duration-300" />
           </button>
         </form>
       </div>
