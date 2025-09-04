@@ -99,7 +99,7 @@ export default function Chat({ isOpen, onClose }: ChatProps) {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9, y: 20 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="fixed bottom-6 right-6 w-[440px] h-[680px] vortexia-glass rounded-3xl vortexia-shadow-pulse z-50 flex flex-col overflow-hidden"
+      className="fixed top-1/2 right-24 transform -translate-y-1/2 w-[420px] h-[650px] vortexia-glass rounded-3xl vortexia-shadow-pulse z-50 flex flex-col overflow-hidden"
       style={{
         boxShadow: '0 30px 60px -12px rgba(0, 0, 0, 0.9), 0 0 100px rgba(220, 38, 38, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03)'
       }}
